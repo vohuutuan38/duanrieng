@@ -24,14 +24,13 @@
     <div class="row formcontent">
         <div class="row mb10 formdsloai">
             
-            <table class="table table-striped table-hover">
+            <table class="table table-hover">
                 <tr>
                     <th>Mã Sản Phẩm</th>
                     <th>Tên Sản Phẩm</th>
                     <th>Hình</th>
                     <th>Giá</th>
                     <th>Mô tả</th>
-                    <th>Số Lượng</th>
                     <th>Mã loại</th>
                     <th>Hành Động</th>
                 </tr>
@@ -62,7 +61,6 @@
                              <td>'.$hinh.'</td>
                               <td>'.$gia.'</td>
                                <td>'.$mo_ta.'</td>
-                               <td>'.$so_luong.'</td>
                                <td>'.$tendanhmuc.'</td>
                             <td>
                                 <a href="'.$suasp.'"><input type="button" class="btn btn-primary" value="SỬA"></a>
