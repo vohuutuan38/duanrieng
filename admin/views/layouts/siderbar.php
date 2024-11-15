@@ -49,20 +49,20 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">Quản lý</span></li>
                 <li class="nav-item">
+                    <a class="nav-link menu-link" href="index.php?act=list_account" >
+                    <i class="ri-user-line"></i><span data-key="t-advance-ui">Quản lý khách hàng</span>
+                    </a>
                     <a class="nav-link menu-link" href="index.php?act=lisdm" >
-                        <i class="ri-stack-line"></i> <span >Danh mục sản phẩm</span>
+                    <i class="ri-file-list-2-fill"></i><span >Danh mục sản phẩm</span>
                     </a>
                     <a class="nav-link menu-link" href="index.php?act=listsp" >
                         <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Danh sách sản phẩm</span>
                     </a>
                     <a class="nav-link menu-link" href="#sidebarDanhMuc" >
-                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lý đơn hàng</span>
+                    <i class="ri-shopping-cart-2-line"></i><span data-key="t-advance-ui">Quản lý đơn hàng</span>
                     </a>
                     <a class="nav-link menu-link" href="#sidebarDanhMuc" >
-                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lý bình luận</span>
-                    </a>
-                    <a class="nav-link menu-link" href="#sidebarDanhMuc" >
-                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lý khách hàng</span>
+                    <i class="ri-message-2-line"></i> <span data-key="t-advance-ui">Quản lý bình luận</span>
                     </a>
                
                 </li>

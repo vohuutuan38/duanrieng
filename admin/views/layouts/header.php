@@ -16,7 +16,9 @@
     <?php
     require_once "libs_css.php";
     ?>
+<style>
 
+</style>
 </head>
 
 <body>

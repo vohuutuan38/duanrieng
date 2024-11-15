@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- nhập content -->
-            <a href="index.php?act=adddm"><input type="button" value="Nhập thêm"></a>
+            <a href="index.php?act=adddm"><input class="btn btn-success" type="button" value="Thêm Danh Mục"></a>
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>

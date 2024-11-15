@@ -59,10 +59,10 @@
                             <!-- Vùng này sẽ chứa các biến thể -->
                             <div class="row mb10 input-group mb-3">
                             <label for="" class="form-label">Màu Sắc</label>
-                                <label><input type="checkbox" name="mau_sac[]" value="black"> Đen</label><br>
-                                <label><input type="checkbox" name="mau_sac[]" value="white"> Trắng</label><br>
-                                <label><input type="checkbox" name="mau_sac[]" value="yellow"> Vàng</label><br>
-                                <label><input type="checkbox" name="mau_sac[]" value="blue"> Xanh</label><br>
+                                <label><input class="form-check-input"  type="checkbox" name="mau_sac[]" value="black"> Đen</label><br>
+                                <label><input class="form-check-input" type="checkbox" name="mau_sac[]" value="white"> Trắng</label><br>
+                                <label><input class="form-check-input" type="checkbox" name="mau_sac[]" value="yellow"> Vàng</label><br>
+                                <label><input class="form-check-input" type="checkbox" name="mau_sac[]" value="blue"> Xanh</label><br>
                             </div>
 
                             <div class="mb-3">
@@ -70,10 +70,10 @@
                                 <input type="text" class="form-control" name="so_luong">
                             </div>
 
-                            <div class="row mb20">
-                                <input type="submit" name="themmoi" value="Thêm mới" style="width: auto;">
-                                <input type="reset" value="Nhập lại" style="width: auto;">
-                                <a href="index.php?act=listsp"><input type="button" value="danhsach"></a>
+                            <div class="flex mt-3">
+                                <input class="btn btn-success" type="submit" name="themmoi" value="Thêm mới" style="width: auto;">
+                                <input class="btn btn-warning" type="reset" value="Nhập lại" style="width: auto;">
+                                <a href="index.php?act=listsp"><input  class="btn btn-primary" type="button" value="danhsach"></a>
                             </div>
                             <?php
                             if (isset($thongbao) && ($thongbao != "")) echo $thongbao;

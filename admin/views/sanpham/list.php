@@ -7,7 +7,7 @@
     <div class="row formtitle mb">
         <h1>DANH SÁCH SẢN PHẨM HÀNG</h1>
     </div>
-    <form action="index.php?act=listsp" method="post">
+    <!-- <form action="index.php?act=listsp" method="post">
                 <input type="text" name="kyw">
                 <select name="ma_danh_muc" >
                     <option value="0" selected>Tất cả</option>
@@ -20,7 +20,8 @@
                             
                         </select>
                         <input type="submit" name="listok" value="GO">
-            </form>
+            </form> -->
+            <a href="index.php?act=addsp"><input class="btn btn-success" type="button" value="Thêm Sản Phẩm"></a>
     <div class="row formcontent">
         <div class="row mb10 formdsloai">
             
@@ -54,28 +55,29 @@
                     }else{
                         $hinh = "no photo";
                     }
-                    echo ' <tr>
+                    echo '<tr>
             
                             <td>'.$ma_san_pham.'</td>
-                            <td>'.$ten_san_pham.'</td>
+                            <td><a href="'.$suasp.'"> '.$ten_san_pham.'</a></td>
                              <td>'.$hinh.'</td>
                               <td>'.$gia.'</td>
                                <td>'.$mo_ta.'</td>
                                <td>'.$tendanhmuc.'</td>
+                               <td></td>
                             <td>
                                 <a href="'.$suasp.'"><input type="button" class="btn btn-primary" value="SỬA"></a>
                                 <a href="'.$xoasp.'"><input type="button" class="btn btn-danger" value="XÓA"></a>
                             </td>
-                        </tr>';
+                        </tr> ';
                 }
                 ?>
             </table>
+            
         </div>
         <div class="row mb10">
             <!-- <input type="button" value="Chọn tất cả">
             <input type="button" value="Bỏ chọn tất cả">
             <input type="button" value="Xóa các mục đã chọn"> -->
-            <a href="index.php?act=addsp"><input type="button" value="Nhập thêm"></a>
         </div>
     </div>
 </div>

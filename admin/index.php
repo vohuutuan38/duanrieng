@@ -20,6 +20,7 @@ include "../admin/views/layouts/header.php";
 include "../admin/views/layouts/siderbar.php";
 include "../models/danhmuc.php";
 include "../models/sanpham.php";
+include "../models/nguoidung.php";
 // //controller
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
@@ -161,6 +162,20 @@ if (isset($_GET['act'])) {
             include "views/sanpham/list.php";
             break;
 
+            case 'list_account':
+                $list_account = load_all_account();
+                include "views/nguoidung/list.php";
+                break;
+
+             case 'updatetrangthai':
+                $id = $_POST['user_id']; // Lấy ID người dùng từ form
+                $new_status = ($_POST['status'] == '1') ? '1' : '0'; // Nếu giá trị 'status' là 1, trạng thái sẽ là 'Hoạt động', nếu là 0 thì 'Khóa'
+
+                // Cập nhật trạng thái trong cơ sở dữ liệu
+                updatetrangthai($new_status, $id);
+                $list_account = load_all_account();
+                include "views/nguoidung/list.php";
+                break;
 
         default:
             include "../admin/views/home.php";
