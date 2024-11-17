@@ -21,6 +21,7 @@ include "../admin/views/layouts/siderbar.php";
 include "../models/danhmuc.php";
 include "../models/sanpham.php";
 include "../models/nguoidung.php";
+include "../models/binhluan.php";
 // //controller
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
@@ -176,7 +177,25 @@ if (isset($_GET['act'])) {
                 $list_account = load_all_account();
                 include "views/nguoidung/list.php";
                 break;
-
+                case 'listspcomment':
+                    if (isset($_POST['listok']) && ($_POST['listok'])) {
+                        $kyw = $_POST['kyw'];
+                        $iddm = $_POST['iddm'];
+                    } else {
+                        $kyw = '';
+                        $iddm = 0;
+                    }
+                    $listdanhmuc = loadall_danhmuc();
+                    $listsanpham = loadall_sanpham();
+                    include "views/binhluan/list.php";
+                    break;
+                case 'listdetailcomment':
+                $id = $_GET['id'];
+                
+                $listcomments = loadone_binhluan($id) ;
+                var_dump($listcomments);
+                include "views/binhluan/detail.php";
+                break;
         default:
             include "../admin/views/home.php";
 

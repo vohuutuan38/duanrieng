@@ -2,6 +2,7 @@
     <div class="page-content">
         <div class="container-fluid">
             <div class="row">
+                <img src=""  alt="">
                 <?php
                 if (is_array($sanpham)) {
                     extract($sanpham);
@@ -10,7 +11,7 @@
 
                 $hinhpath = "../uploads/" . $anh_san_pham;
                 if (is_file($hinhpath)) {
-                    $hinh = "<img src='" . $hinhpath . "' height='290px' width='80px' >";
+                    $hinh = "<img src='" . $hinhpath . "' height='150px' width='150px' >";
                 } else {
                     $hinh = "no photo";
                 }
@@ -23,37 +24,38 @@
                         <form action="index.php?act=updatesp" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="anh_san_pham_cu" value="<?php echo $sanpham['anh_san_pham']; ?>">
                             <div class="row mb10">
-                                <select name="iddm">
+                            <label for="exampleFormControlInput1" class="form-label">Danh Mục</label>
+                                <select name="iddm" class="form-select">
                                     <option value="0" selected>Tất cả</option>
                                     <?php
                                     foreach ($listdanhmuc as $danhmuc) {
-                                        extract($danhmuc);
-                                        if ($ma_danh_muc == $danhmuc['ma_danh_muc']) $s = "selected";
+                                        
+                                        if ($ma_danh_muc == $danhmuc['ma_danh_muc']) $s ="selected";
                                         else $s = "";
-                                        echo '<option value="' . $danhmuc['ma_danh_muc'] . '" ' . $s . '>' . $danhmuc['ten_danh_muc'] . '</option>';
+                                        echo '<option value="' . $danhmuc['ma_danh_muc']. '" ' . $s . '>' . $danhmuc['ten_danh_muc'] . '</option>';
                                     }
                                     ?>
 
                                 </select>
                             </div>
                             <div class="row mb10">
-                                TÊN SẢN PHẨM <br>
-                                <input type="text" name="ten_san_pham" value="<?= $ten_san_pham ?>">
+                            <label for="exampleFormControlInput1" class="form-label">Tên Sản Phẩm</label>
+                                <input type="text" name="ten_san_pham" class="form-control" value="<?= $ten_san_pham ?>">
 
                             </div>
                             <div class="row mb10">
-                                GIÁ <br>
-                                <input type="text" name="gia" value="<?= $gia ?>">
+                            <label for="exampleFormControlInput1" class="form-label">Giá Sản Phẩm</label>
+                                <input type="text" class="form-control" name="gia" value="<?= $gia ?>">
                             </div>
                             <div class="row mb10">
                                 HÌNH <br>
-                                <input type="file" name="anh_san_pham">
-                                <?= $hinh ?>
-
+                                <input type="file" class="form-control" name="anh_san_pham">
+                                
                             </div>
+                            <?= $hinh ?>
                             <div class="row mb10">
-                                MÔ TẢ<br>
-                                <textarea name="mo_ta" cols="30" rows="10"><?= $sanpham['mo_ta'] ?></textarea>
+                            <label for="exampleFormControlInput1" class="form-label">Mô tả</label>
+                                <textarea name="mo_ta" cols="30" class="form-control" rows="10"><?= $sanpham['mo_ta'] ?></textarea>
                             </div>
                             <div class="row mb10 input-group mb-3">
                                 MÀU SẮC <br>
@@ -64,17 +66,17 @@
                             </div>
                         
                             <div class="row mb10 input-group mb-3">
-                                SỐ LƯỢNG <br>
-                                <input type="text" name="so_luong" value="<?php echo  $color['so_luong']?>">
+                            <label for="exampleFormControlInput1" class="form-label">Số lượng</label>
+                                <input type="text" class="form-control" name="so_luong" value="<?php echo  $color['so_luong']?>">
                                    
                             </div>
                            
 
-                            <div class="row mb20">
+                            <div class="flex mb20">
                                 <input type="hidden" name="ma_san_pham" value="<?= $ma_san_pham ?>">
-                                <input type="submit" name="capnhat" value="Cập nhật">
-                                <input type="reset" value="Nhập lại">
-                                <a href="index.php?act=listsp"><input type="button" value="Danh sách"></a>
+                                <input type="submit" class="btn btn-success" name="capnhat" value="Cập nhật">
+                                <input type="reset" class="btn btn-warning" value="Nhập lại">
+                                <a href="index.php?act=listsp"><input class="btn btn-primary" type="button" value="Danh sách"></a>
                             </div>
                             <?php
                             if (isset($thongbao) && ($thongbao != "")) echo $thongbao;

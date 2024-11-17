@@ -7,7 +7,7 @@
                 <img src="assets/images/logo-sm.png" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="assets/images/logomobiel.jpg" alt="" height="70">
+                <img src="assets/images/logo/logo.png" alt="" height="70">
             </span>
         </a>
         <!-- Light Logo-->
@@ -16,7 +16,7 @@
                 <img src="assets/images/logo-sm.png" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="assets/images/logomobiel.jpg" alt="" height="70">
+                <img src="assets/images/logo/logo.png" alt="" height="70">
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -53,7 +53,7 @@
                     <i class="ri-user-line"></i><span data-key="t-advance-ui">Quản lý khách hàng</span>
                     </a>
                     <a class="nav-link menu-link" href="index.php?act=lisdm" >
-                    <i class="ri-file-list-2-fill"></i><span >Danh mục sản phẩm</span>
+                    <i class="ri-file-list-2-fill"></i><span >Danh mục</span>
                     </a>
                     <a class="nav-link menu-link" href="index.php?act=listsp" >
                         <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Danh sách sản phẩm</span>
@@ -61,7 +61,7 @@
                     <a class="nav-link menu-link" href="#sidebarDanhMuc" >
                     <i class="ri-shopping-cart-2-line"></i><span data-key="t-advance-ui">Quản lý đơn hàng</span>
                     </a>
-                    <a class="nav-link menu-link" href="#sidebarDanhMuc" >
+                    <a class="nav-link menu-link" href="index.php?act=listspcomment" >
                     <i class="ri-message-2-line"></i> <span data-key="t-advance-ui">Quản lý bình luận</span>
                     </a>
                
