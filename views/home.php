@@ -156,14 +156,14 @@
                                     foreach ($product_iphone as $product) {
                                         extract($product);
                                         $anh = "./uploads/" . $anh_san_pham;
-
+                                        $linksp = "index.php?act=chitietsanpham&ma_san_pham=" . $ma_san_pham;
                                         // Chuyển đổi chuỗi màu sắc thành mảng
                                         $mau_sac_arr = explode(',', $mau_sac);
 
                                         echo '                      
                                                 <div class="product-item">
                                                     <figure class="product-thumb">
-                                                        <a href="product-details.html">
+                                                        <a href="'.$linksp.'">
                                                             <img class="pri-img" src="' . $anh . '" alt="product">
                                                             <img class="sec-img" src="' . $anh . '" alt="product">
                                                         </a>
@@ -178,7 +178,7 @@
                                                     </figure>
                                                     <div class="product-caption text-center">
                                                         <div class="product-identity">
-                                                            <p class="manufacturer-name"><a href="product-details.html">' . $ten_san_pham . '</a></p>
+                                                            <p class="manufacturer-name"><a href="'.$linksp.'">' . $ten_san_pham . '</a></p>
                                                         </div>
                                                         <ul class="color-categories">';
 
@@ -191,7 +191,7 @@
 
                                                                                     echo '</ul>
                                                     <h6 class="product-name">
-                                                        <a href="product-details.html">' . $ten_san_pham . '</a>
+                                                        <a href="'.$linksp.'">' . $ten_san_pham . '</a>
                                                     </h6>
                                                     <div class="price-box">
                                                         <span class="price-regular">' . number_format($gia) . ' đ</span>
@@ -240,14 +240,14 @@
                                     foreach ($product_samsung as $product) {
                                         extract($product);
                                         $anh = "./uploads/" . $anh_san_pham;
-
+                                        $linksp = "index.php?act=chitietsanpham&ma_san_pham=" . $ma_san_pham;
                                         // Chuyển đổi chuỗi màu sắc thành mảng
                                         $mau_sac_arr = explode(',', $mau_sac);
 
                                         echo '                      
                                                 <div class="product-item">
                                                     <figure class="product-thumb">
-                                                        <a href="product-details.html">
+                                                        <a href="'.$linksp.'">
                                                             <img class="pri-img" src="' . $anh . '" alt="product">
                                                             <img class="sec-img" src="' . $anh . '" alt="product">
                                                         </a>
@@ -262,7 +262,7 @@
                                                     </figure>
                                                     <div class="product-caption text-center">
                                                         <div class="product-identity">
-                                                            <p class="manufacturer-name"><a href="product-details.html">' . $ten_san_pham . '</a></p>
+                                                            <p class="manufacturer-name"><a href="'.$linksp.'">' . $ten_san_pham . '</a></p>
                                                         </div>
                                                         <ul class="color-categories">';
 
@@ -275,7 +275,7 @@
 
                                                                                     echo '</ul>
                                                     <h6 class="product-name">
-                                                        <a href="product-details.html">' . $ten_san_pham . '</a>
+                                                        <a href="'.$linksp.'">' . $ten_san_pham . '</a>
                                                     </h6>
                                                     <div class="price-box">
                                                         <span class="price-regular">' . number_format($gia) . ' đ</span>
@@ -320,6 +320,7 @@
                         foreach ($product_new as $product_new) {
                             extract($product_new);
                             $anh = "./uploads/" . $anh_san_pham;
+                            $linksp = "index.php?act=chitietsanpham&ma_san_pham=" . $ma_san_pham;
 
                             // Chuyển đổi chuỗi màu sắc thành mảng
                             $mau_sac_arr = explode(',', $mau_sac);
@@ -327,7 +328,7 @@
                             echo '                      
                             <div class="product-item">
                                 <figure class="product-thumb">
-                                    <a href="product-details.html">
+                                    <a href="'.$linksp.'">
                                         <img class="pri-img" src="' . $anh . '" alt="product">
                                         <img class="sec-img" src="' . $anh . '" alt="product">
                                     </a>
@@ -342,7 +343,7 @@
                                 </figure>
                                 <div class="product-caption text-center">
                                     <div class="product-identity">
-                                        <p class="manufacturer-name"><a href="product-details.html">' . $ten_san_pham . '</a></p>
+                                        <p class="manufacturer-name"><a href="'.$linksp.'">' . $ten_san_pham . '</a></p>
                                     </div>
                                     <ul class="color-categories">';
 
@@ -355,7 +356,7 @@
 
                             echo '</ul>
                                 <h6 class="product-name">
-                                    <a href="product-details.html">' . $ten_san_pham . '</a>
+                                    <a href="'.$linksp.'">' . $ten_san_pham . '</a>
                                 </h6>
                                 <div class="price-box">
                                     <span class="price-regular">' . number_format($gia) . ' đ</span>

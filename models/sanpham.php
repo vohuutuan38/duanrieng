@@ -77,12 +77,12 @@ function load_ten_dm($ma_danh_muc)
         return "";
     }
 }
-function loadone_sanpham($ma_san_pham)
-{
-    $sql = "select * from sanpham where ma_san_pham=" . $ma_san_pham;
-    $sp = pdo_query_one($sql);
-    return $sp;
-}
+// function loadone_sanpham($ma_san_pham)
+// {
+//     $sql = "select * from sanpham where ma_san_pham=" . $ma_san_pham;
+//     $sp = pdo_query_one($sql);
+//     return $sp;
+// }
 function loadone_mausac($ma_san_pham)
 {
     $sql_color = "SELECT mau_sac , so_luong FROM bienthe WHERE ma_san_pham = '$ma_san_pham'";
@@ -267,3 +267,54 @@ function loadall_shophuawei()
     return $list_product;
 }
 
+function loadone_sanpham($ma_san_pham)
+{
+    $sql = "SELECT 
+                sanpham.ma_san_pham,
+                sanpham.ten_san_pham,
+                sanpham.anh_san_pham,
+                sanpham.mo_ta,
+                sanpham.ma_danh_muc,
+                sanpham.gia,
+                GROUP_CONCAT(bienthe.mau_sac) AS mau_sac
+            FROM 
+                sanpham
+            INNER JOIN 
+                bienthe 
+            ON 
+                sanpham.ma_san_pham = bienthe.ma_san_pham
+            WHERE 
+                sanpham.ma_san_pham = $ma_san_pham
+            GROUP BY 
+                sanpham.ma_san_pham
+            ORDER BY 
+                sanpham.ma_san_pham DESC";
+    $oneproduct = pdo_query($sql);
+    return $oneproduct;
+}
+
+
+function load_product_cungloai($ma_danh_muc,$current_product_id)
+{
+    $sql = "SELECT 
+                sanpham.ma_san_pham,
+                sanpham.ten_san_pham,
+                sanpham.anh_san_pham,
+                sanpham.gia,
+                GROUP_CONCAT(bienthe.mau_sac) AS mau_sac
+            FROM 
+                sanpham
+            INNER JOIN 
+                bienthe 
+            ON 
+                sanpham.ma_san_pham = bienthe.ma_san_pham
+            WHERE 
+                sanpham.ma_danh_muc = $ma_danh_muc
+                AND sanpham.ma_san_pham != $current_product_id
+            GROUP BY 
+                sanpham.ma_san_pham
+            ORDER BY 
+                sanpham.ma_san_pham DESC";
+    $oneproduct = pdo_query($sql);
+    return $oneproduct;
+}

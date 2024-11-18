@@ -122,9 +122,10 @@
                                                 <i class="pe-7s-user"></i>
                                             </a>
                                             <ul class="dropdown-list">
-                                                <li><a href="login-register.html">login</a></li>
-                                                <li><a href="login-register.html">register</a></li>
-                                                <li><a href="my-account.html">my account</a></li>
+                                                <li><a href="index.php?act=dangnhap">Đăng Nhập</a></li>
+                                                <li><a href="index.php?act=dangky">Đăng Ký</a></li>
+                                                <li><a href="index.php?act=dangxuat">Đăng Xuất</a></li>
+                                                <li><a href="index.php?act=thoat">my account</a></li>
                                             </ul>
                                         </li>
                                         <!-- <li>
