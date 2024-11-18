@@ -109,39 +109,57 @@
                         <div class="col-lg-4">
                             <div class="header-right d-flex align-items-center justify-content-xl-between justify-content-lg-end">
                                 <div class="header-search-container">
-                                    <button class="search-trigger d-xl-none d-lg-block"><i class="pe-7s-search"></i></button>
-                                    <form class="header-search-box d-lg-none d-xl-block">
-                                        <input type="text" placeholder="Search entire store hire" class="header-search-field">
-                                        <button class="header-search-btn"><i class="pe-7s-search"></i></button>
-                                    </form>
+
                                 </div>
                                 <div class="header-configure-area">
-                                    <ul class="nav justify-content-end">
-                                        <li class="user-hover">
-                                            <a href="#">
-                                                <i class="pe-7s-user"></i>
-                                            </a>
-                                            <ul class="dropdown-list">
-                                                <li><a href="index.php?act=dangnhap">Đăng Nhập</a></li>
-                                                <li><a href="index.php?act=dangky">Đăng Ký</a></li>
-                                                <li><a href="index.php?act=dangxuat">Đăng Xuất</a></li>
-                                                <li><a href="index.php?act=thoat">my account</a></li>
-                                            </ul>
-                                        </li>
-                                        <!-- <li>
-                                            <a href="wishlist.html">
-                                                <i class="pe-7s-like"></i>
-                                                <div class="notification">0</div>
-                                            </a>
-                                        </li> -->
-                                        <li>
-                                            <a href="#" class="minicart-btn">
-                                                <i class="pe-7s-shopbag"></i>
-                                                <div class="notification">2</div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+    <ul class="nav justify-content-end d-flex align-items-center">
+        <?php if (isset($_SESSION['user'])): ?>
+            <!-- Khi người dùng đã đăng nhập -->
+            <li class="user-hover">
+                <div class="d-flex align-items-center">
+                    <a href="#" class="p-1">
+                    <?php $anh = "./uploads/" .$_SESSION['user']['anh_dai_dien'];  ?>
+                    <img class="rounded-circle header-profile-user" src="<?= $anh ?>" alt="Header Avatar" style="width: 40px; height: 40px; object-fit: cover;">
+                    </a>
+                    <span>Xin Chào <?php echo htmlspecialchars($_SESSION['user']['ten']); ?></span>
+                </div>
+                <ul class="dropdown-list">
+                    <li><a href="index.php?act=mycart">Danh sách đơn hàng</a></li>
+                    <li><a href="index.php?act=edit_user">Cập nhật tài khoản</a></li>
+                    <li><a href="index.php?act=forgot_password">Quên mật khẩu</a></li>
+                    <li><a href="index.php?act=dangxuat">Đăng xuất</a></li>
+                </ul>
+            </li>
+        <?php else: ?>
+            <!-- Khi người dùng chưa đăng nhập -->
+            <li class="user-hover">
+                <div class="d-flex align-items-center">
+                    <a href="#" class="p-1">
+                        <i class="pe-7s-user"></i>
+                    </a>
+                    <span>Tài khoản</span>
+                </div>
+                <ul class="dropdown-list">
+                    <li><a href="index.php?act=dangnhap">Đăng nhập</a></li>
+                    <li><a href="index.php?act=dangky">Đăng ký</a></li>
+                </ul>
+            </li>
+        <?php endif; ?>
+
+        <li>
+            <a href="#" class="minicart-btn">
+                <i class="pe-7s-shopbag"></i>
+                <div class="notification">
+                    <?php
+                    $cart_count = isset($_SESSION['mycart']) ? count($_SESSION['mycart']) : 0;
+                    echo $cart_count;
+                    ?>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+
                             </div>
                         </div>
                         <!-- mini cart area end -->

@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+ob_start();
 // // Require file Common
 // require_once '../commons/env.php'; // Khai báo biến môi trường
 // require_once '../commons/function.php'; // Hàm hỗ trợ
@@ -196,6 +197,11 @@ if (isset($_GET['act'])) {
                 var_dump($listcomments);
                 include "views/binhluan/detail.php";
                 break;
+                case 'dangxuat';
+                session_start();
+                session_destroy();
+                header('Location:./index.php');
+                break;
         default:
             include "../admin/views/home.php";
 
@@ -206,3 +212,4 @@ if (isset($_GET['act'])) {
 }
 
 include "../admin/views/layouts/footer.php";
+ob_end_flush();

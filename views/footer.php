@@ -291,6 +291,7 @@
 ============================================ -->
 
     <!-- Modernizer JS -->
+     
     <script src="./views/assets/js/vendor/modernizr-3.6.0.min.js"></script>
     <!-- jQuery JS -->
     <script src="./views/assets/js/vendor/jquery-3.6.0.min.js"></script>

@@ -23,21 +23,30 @@
             <div class="container">
                 <div class="member-area-from-wrap">
                     <div class="row">
+                    <?php
+if (isset($thongbao)) {
+    echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Thông báo:</strong> ' . $thongbao . '
+          </div>';
+}
+?>
                         <!-- Login Content Start -->
                         <div class="col-lg-12">
                             <div class="login-reg-form-wrap">
                                 <h5 class="text-center">Đăng Nhập</h5>
-                                <form action="#" method="post">
+                                <form  method="post">
                                     <div class="single-input-item">
-                                        <input type="email" placeholder="Nhập Email" required />
+                                        <input type="email" name="email" placeholder="Nhập Email" required />
                                     </div>
                                     <div class="single-input-item">
-                                        <input type="password" placeholder="Nhập Mật Khẩu" required />
+                                        <input type="password" name="password" placeholder="Nhập Mật Khẩu" required />
                                     </div>
                                     <div class="single-input-item">
-                                        <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
-                                            <a href="#" class="forget-pwd">Quên Mật Khẩu ?</a>
+                                        <div class="login-reg-form-meta d-flex align-items-center ">
+                                            <a href="#" class=" p-2">Quên Mật Khẩu ?</a>
+                                            <a href="index.php?act=dangky" class="">Chưa có tài khoản ?</a>
                                         </div>
+                                       
                                     </div>
                                     <div class="single-input-item">
                                         <button class="btn btn-sqr">Đăng Nhập</button>

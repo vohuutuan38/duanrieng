@@ -13,5 +13,26 @@ function updatetrangthai($new_status, $id)
     pdo_execute($sql);
 }
 
+function insert_user($ten,$email,$mat_khau,$hinh,$so_dien_thoai,$dia_chi)
+{
+    $sql = "INSERT INTO nguoidung (ten, email, mat_khau, anh_dai_dien, so_dien_thoai,dia_chi) 
+            VALUES ('$ten','$email','$mat_khau','$hinh','$so_dien_thoai','$dia_chi')";
+    pdo_execute($sql);
+}
+
+
+function findByEmail($email)
+{
+  $sql = "SELECT * FROM nguoidung WHERE email = '$email'";
+  $account = pdo_query_one($sql);
+  return $account;
+}
+
+function emailExists($email) {
+   $sql = "SELECT COUNT(*) FROM nguoidung WHERE email = '$email'";
+   $account_user = pdo_query_one($sql);
+   return $account_user;
+}
+
 
 ?>
