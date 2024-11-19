@@ -13,7 +13,14 @@ include './models/nguoidung.php';
 include './models/binhluan.php';
 include './models/sanpham.php';
 include './models/danhmuc.php';
+include './models/donhang.php';
 
+if (isset($_SESSION['thongbao'])) {
+    echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Thông báo:</strong> ' . $_SESSION['thongbao'] . '
+          </div>';
+    unset($_SESSION['thongbao']);
+}
 
 
 $product_new = loadall_product_home();
@@ -148,7 +155,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $so_luong = (int)$_POST['so_luong'];
                 $mau_sac = $_POST['mau_sac'];
                 $anh_san_pham = $_POST['anh_san_pham'];
-               
+
 
                 // Kiểm tra sản phẩm đã tồn tại trong giỏ hàng chưa
                 $found = false;
@@ -204,6 +211,70 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 exit();
             }
             break;
+
+        case 'checkout':
+            if (!isset($_SESSION['user'])) {
+                // Nếu chưa đăng nhập, yêu cầu đăng nhập trước
+                header('Location: index.php?act=dangnhap');
+                exit();
+            }
+
+            if (!empty($_SESSION['cart'])) {
+                // Tính tổng tiền để hiển thị trên trang thanh toán
+                $tong_tien_gio_hang = 0;
+                foreach ($_SESSION['cart'] as $item) {
+                    $tong_tien_gio_hang += $item['gia'] * $item['so_luong'];
+                }
+            } else {
+                // Nếu giỏ hàng trống, quay về trang giỏ hàng
+                header('Location: index.php?act=cart');
+                exit();
+            }
+
+
+            include './views/thanhtoan.php';
+            break;
+            case 'confirmcheckout':
+                if (isset($_POST['ho_ten']) && isset($_POST['so_dien_thoai']) && isset($_POST['dia_chi'])) {
+                    // Lấy thông tin người dùng từ session
+                    $ma_nguoi_dung = $_SESSION['user']['ma_nguoi_dung'];
+                  
+                    $tong_tien = $_POST['tong_tien']; // Lấy tổng tiền từ form
+                    
+                    // Lưu vào bảng `donhang`
+                    // var_dump($ma_nguoi_dung, $tong_tien);
+                    $ma_don_hang = insert_donhang($ma_nguoi_dung, $tong_tien);
+                    
+                    // var_dump($ma_don_hang);
+                    // Lưu chi tiết sản phẩm vào bảng `chitietdonhang`
+                    foreach ($_SESSION['cart'] as $item) {
+                        insert_chitietdonhang($ma_don_hang, $item);
+                    }
+            
+                    // Xóa giỏ hàng sau khi đã đặt hàng
+                    unset($_SESSION['cart']);
+            
+                    // Lưu thông báo vào session
+                    $_SESSION['thongbao'] = "Đặt hàng thành công!";
+            
+                    // Chuyển hướng về trang chủ
+                    header('Location: index.php');
+                    exit();
+                }
+                break;
+            
+                case 'donhangcuatoi':
+                    if (isset($_SESSION['user']['ma_nguoi_dung'])) {
+                        $ma_nguoi_dung = $_SESSION['user']['ma_nguoi_dung'];  // Lấy mã người dùng từ session
+                        $donhangs = get_donhang_by_user($ma_nguoi_dung);  // Lấy danh sách đơn hàng của người dùng
+                    } else {
+                        $donhangs = [];  // Nếu người dùng chưa đăng nhập, trả về mảng rỗng
+                    }
+                    include './views/donhangcuatoi.php';  // Gọi view và truyền dữ liệu vào
+                    break;
+                
+
+
 
         default:
             include './views/home.php';

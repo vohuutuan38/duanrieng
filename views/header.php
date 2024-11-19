@@ -62,7 +62,7 @@
                         <!-- start logo area -->
                         <div class="col-lg-2">
                             <div class="logo">
-                                <a href="index.html">
+                                <a href="index.php">
                                     <img src="./views/assets/img/logo/logo.png" alt="Brand Logo" width="80px" height="80px">
                                 </a>
                             </div>
@@ -127,7 +127,7 @@
                     <?php if(($_SESSION['user']['loai_nguoi_dung']) == 'NhanVien' ){
                         echo '<li><a href="./admin/index.php">Trang Admin</a></li>';
                     }?>
-                    <li><a href="index.php?act=mycart">Danh sách đơn hàng</a></li>
+                    <li><a href="index.php?act=donhangcuatoi">Danh sách đơn hàng</a></li>
                     <li><a href="index.php?act=edit_user">Cập nhật tài khoản</a></li>
                     <li><a href="index.php?act=forgot_password">Quên mật khẩu</a></li>
                     <li><a href="index.php?act=dangxuat">Đăng xuất</a></li>
