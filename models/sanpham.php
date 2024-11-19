@@ -289,7 +289,7 @@ function loadone_sanpham($ma_san_pham)
                 sanpham.ma_san_pham
             ORDER BY 
                 sanpham.ma_san_pham DESC";
-    $oneproduct = pdo_query($sql);
+    $oneproduct = pdo_query_one($sql);
     return $oneproduct;
 }
 

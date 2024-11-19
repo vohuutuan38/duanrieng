@@ -31,7 +31,7 @@ function findByEmail($email)
 function emailExists($email) {
    $sql = "SELECT COUNT(*) FROM nguoidung WHERE email = '$email'";
    $account_user = pdo_query_one($sql);
-   return $account_user;
+   return $account_user['count'] > 0;
 }
 
 

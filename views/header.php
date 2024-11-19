@@ -93,10 +93,10 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li><a href="blog-left-sidebar.html">Chính Sách</a>
+                                            <li><a href="index.php?act=chinhsach">Chính Sách</a>
                                                
                                             </li>
-                                            <li><a href="contact-us.html">Về Chúng Tôi</a></li>
+                                            <li><a href="index.php?act=vechungtoi">Về Chúng Tôi</a></li>
                                         </ul>
                                     </nav>
                                     <!-- main menu navbar end -->

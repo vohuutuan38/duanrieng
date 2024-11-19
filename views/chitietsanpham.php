@@ -9,7 +9,7 @@
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.php"><i class="fa fa-home"></i></a></li>
                                 <li class="breadcrumb-item"><a href="index.php">shop</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Chi Tiết Sản Phẩm <?= $oneproduct[0]['ten_san_pham'] ?></li>
+                                <li class="breadcrumb-item active" aria-current="page">Chi Tiết Sản Phẩm <?= $oneproduct['ten_san_pham'] ?></li>
                             </ul>
                         </nav>
                     </div>
@@ -19,7 +19,7 @@
     </div>
     <!-- breadcrumb area end -->
     <?php
-    $anh = './uploads/' . $oneproduct[0]['anh_san_pham'] . '';
+    $anh = './uploads/' . $oneproduct['anh_san_pham'] . '';
     ?>
     <!-- page main wrapper start -->
     <div class="shop-main-wrapper section-padding pb-0">
@@ -44,29 +44,41 @@
                                     <div class="manufacturer-name">
                                         <a href="product-details.html">HasTech</a>
                                     </div>
-                                    <h3 class="product-name"><?= $oneproduct[0]['ten_san_pham'] ?></h3>
+                                    <h3 class="product-name"><?= $oneproduct['ten_san_pham'] ?></h3>
 
                                     <div class="price-box">
-                                        <span class="price-regular"><?= number_format($oneproduct[0]['gia']) ?> đ</span>
+                                        <span class="price-regular"><?= number_format($oneproduct['gia']) ?> đ</span>
 
                                     </div>
 
-                                    <p class="pro-desc"><?= $oneproduct[0]['mo_ta'] ?></p>
+                                    <p class="pro-desc"><?= $oneproduct['mo_ta'] ?></p>
                                     <div class="quantity-cart-box d-flex align-items-center">
                                         <h6 class="option-title">qty:</h6>
                                         <div class="quantity">
                                             <div class="pro-qty"><input type="text" value="1"></div>
                                         </div>
+                                        <?php
+                  if (isset($_SESSION['user'])) {
+                  ?>
                                         <div class="action_link">
-                                            <a class="btn btn-cart2" href="#">Add to cart</a>
+                                            <a class="btn btn-cart2" href="#">Thêm Vào giỏ hàng</a>
                                         </div>
+                                        <?php
+                  } else {
+                  ?>
+                                        <div class="action_link">
+                                            <a class="btn btn-cart2" href="index.php?act=dangnhap">Đăng Nhập Để Mua Hàng</a>
+                                        </div>
+<?php
+                  }
+                  ?>
                                     </div>
                                     <div class="pro-size">
                                         <h6 class="option-title">Màu :</h6>
                                         <select class="nice-select">
 
                                             <?php
-                                            $mau_sac_arr = explode(',', $oneproduct[0]['mau_sac']);
+                                            $mau_sac_arr = explode(',', $oneproduct['mau_sac']);
                                             foreach ($mau_sac_arr as $mau) {
                                                 echo '  <option >' . $mau . '  <a class="color-circle" href="#" style="background-color: ' . trim($mau) . ';" title="' . ucfirst(trim($mau)) . '"></a></option>';
                                             } ?>
@@ -101,7 +113,7 @@
                                     <div class="tab-content reviews-tab">
                                         <div class="tab-pane fade show active" id="tab_one">
                                             <div class="tab-one">
-                                                <p><?= $oneproduct[0]['mo_ta'] ?></p>
+                                                <p><?= $oneproduct['mo_ta'] ?></p>
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="tab_two">
@@ -109,7 +121,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>color</td>
-                                                        <td> <?= $oneproduct[0]['mau_sac'] ?></td>
+                                                        <td> <?= $oneproduct['mau_sac'] ?></td>
                                                     </tr>
 
                                                 </tbody>

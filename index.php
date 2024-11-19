@@ -41,6 +41,8 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $hinh = ''; 
             }
             if (emailExists($email)) {
+                // var_dump(emailExists($email));
+                // die();
                 $thongbao = "Email này đã được sử dụng!";
                 require './views/account/dangky.php';
                 return;
@@ -113,7 +115,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             $ma_san_pham = $_GET['ma_san_pham'];
             $oneproduct = loadone_sanpham($ma_san_pham);
             extract($oneproduct);
-            $product_cung_loai = load_product_cungloai($oneproduct[0]['ma_danh_muc'],$oneproduct[0]['ma_san_pham']);
+            $product_cung_loai = load_product_cungloai($ma_danh_muc,$ma_san_pham);
             $load_all_binhluan = load_all_binhluan($ma_san_pham);
             // var_dump($product_cung_loai);
 
@@ -127,6 +129,14 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include './views/home.php';
         }
         break;
+        case 'chinhsach':
+           
+            include './views/chinhsach.php';
+            break;
+        case 'vechungtoi':
+    
+            include './views/vechungtoi.php';
+            break;
 
 
 
