@@ -41,52 +41,67 @@
                             </div>
                             <div class="col-lg-7">
                                 <div class="product-details-des">
-                                    <div class="manufacturer-name">
-                                        <a href="product-details.html">HasTech</a>
-                                    </div>
-                                    <h3 class="product-name"><?= $oneproduct['ten_san_pham'] ?></h3>
-
-                                    <div class="price-box">
-                                        <span class="price-regular"><?= number_format($oneproduct['gia']) ?> đ</span>
-
-                                    </div>
-
-                                    <p class="pro-desc"><?= $oneproduct['mo_ta'] ?></p>
-                                    <div class="quantity-cart-box d-flex align-items-center">
-                                        <h6 class="option-title">qty:</h6>
-                                        <div class="quantity">
-                                            <div class="pro-qty"><input type="text" value="1"></div>
+                                    <form action="index.php?act=addtocart" method="post">
+                                        <!-- Tên nhà sản xuất -->
+                                        <div class="manufacturer-name">
+                                            <a href="product-details.html">HasTech</a>
                                         </div>
-                                        <?php
-                  if (isset($_SESSION['user'])) {
-                  ?>
-                                        <div class="action_link">
-                                            <a class="btn btn-cart2" href="#">Thêm Vào giỏ hàng</a>
+
+                                        <!-- Tên sản phẩm -->
+                                        <h3 class="product-name"><?= htmlspecialchars($oneproduct['ten_san_pham']) ?></h3>
+
+                                        <!-- Giá sản phẩm -->
+                                        <div class="price-box">
+                                            <span class="price-regular"><?= number_format($oneproduct['gia']) ?> đ</span>
                                         </div>
-                                        <?php
-                  } else {
-                  ?>
-                                        <div class="action_link">
-                                            <a class="btn btn-cart2" href="index.php?act=dangnhap">Đăng Nhập Để Mua Hàng</a>
+
+                                        <!-- Mô tả sản phẩm -->
+                                        <p class="pro-desc"><?= htmlspecialchars($oneproduct['mo_ta']) ?></p>
+
+                                        <!-- Số lượng sản phẩm -->
+                                        <div class="quantity-cart-box d-flex align-items-center">
+                                            <h6 class="option-title">Số lượng:</h6>
+                                            <div class="quantity">
+                                                <div class="pro-qty">
+                                                    <input type="number" name="so_luong" value="1" min="1">
+                                                </div>
+                                            </div>
                                         </div>
-<?php
-                  }
-                  ?>
-                                    </div>
-                                    <div class="pro-size">
-                                        <h6 class="option-title">Màu :</h6>
-                                        <select class="nice-select">
 
-                                            <?php
-                                            $mau_sac_arr = explode(',', $oneproduct['mau_sac']);
-                                            foreach ($mau_sac_arr as $mau) {
-                                                echo '  <option >' . $mau . '  <a class="color-circle" href="#" style="background-color: ' . trim($mau) . ';" title="' . ucfirst(trim($mau)) . '"></a></option>';
-                                            } ?>
+                                        <!-- Lựa chọn màu sắc -->
+                                        <div class="pro-size">
+                                            <h6 class="option-title">Màu sắc:</h6>
+                                            <select class="nice-select" name="mau_sac" required>
+                                                <?php
+                                                $mau_sac_arr = explode(',', $oneproduct['mau_sac']);
+                                                foreach ($mau_sac_arr as $mau) {
+                                                    $mau = htmlspecialchars(trim($mau));
+                                                    echo "<option value=\"$mau\">" . ucfirst($mau) . "</option>";
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+
+                                        <!-- Các thông tin ẩn -->
+                                        <input type="hidden" name="ma_san_pham" value="<?= htmlspecialchars($oneproduct['ma_san_pham']) ?>">
+                                        <input type="hidden" name="ten_san_pham" value="<?= htmlspecialchars($oneproduct['ten_san_pham']) ?>">
+                                        <input type="hidden" name="gia" value="<?= htmlspecialchars($oneproduct['gia']) ?>">
+                                        <input type="hidden" name="anh_san_pham" value="<?= $anh ?>">
 
 
+                                        <!-- Hành động thêm vào giỏ hàng -->
+                                        <?php if (isset($_SESSION['user'])) { ?>
+                                            <div class="action_link">
+                                                <button type="submit" class="btn btn-cart2">Thêm Vào Giỏ Hàng</button>
+                                            </div>
+                                        <?php } else { ?>
+                                            <div class="action_link">
+                                                <a class="btn btn-cart2" href="index.php?act=dangnhap">Đăng Nhập Để Mua Hàng</a>
+                                            </div>
+                                        <?php } ?>
+                                    </form>
 
-                                        </select>
-                                    </div>
+
 
                                 </div>
                             </div>
@@ -128,7 +143,7 @@
                                             </table>
                                         </div>
                                         <div class="tab-pane fade" id="tab_three">
-                                          
+
                                             <h5>Bình Luận</h5>
                                             <?php
                                             foreach ($load_all_binhluan as $load_all_binhluan) {
@@ -145,7 +160,7 @@
                                                 }
 
                                                 // Hiển thị bình luận với đánh giá sao
-                                                                                                echo '
+                                                echo '
                                                     <div class="total-reviews">
                                                         <div class="rev-avatar">
                                                             <img src="./views/assets/img/user.jpg" alt="">
@@ -160,8 +175,8 @@
                                                             <p>' . $noi_dung . '</p>
                                                         </div>
                                                     </div>';
-                                                                                            }
-                                                                                            ?>
+                                            }
+                                            ?>
 
 
                                             <form action="#" class="review-form">
