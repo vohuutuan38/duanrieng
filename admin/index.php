@@ -114,15 +114,17 @@ if (isset($_GET['act'])) {
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 $sanpham = loadone_sanpham($_GET['id']);
                 $colors = loadone_mausac($_GET['id']);
-                $mau_sac = array(); // Khởi tạo mảng màu sắc rỗng
+               
                 $so_luong = array(); // Khởi tạo mảng số lượng rỗng
+                
                 foreach ($colors as $color) {
                     $mau_sac[] = $color['mau_sac']; // Lưu màu sắc vào mảng
-                    $so_luong[] = $color['so_luong']; // Lưu màu sắc vào mảng
+                   
                 }
+               
             }else {
                 $mau_sac = []; // Nếu không có mã sản phẩm thì khởi tạo mảng màu sắc rỗng
-                $so_luong = []; // Nếu không có mã sản phẩm thì khởi tạo mảng màu sắc rỗng
+               
             }
             $listdanhmuc = loadall_danhmuc();
             include "views/sanpham/update.php";

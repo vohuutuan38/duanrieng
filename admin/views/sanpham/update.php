@@ -57,6 +57,8 @@
                             <label for="exampleFormControlInput1" class="form-label">Mô tả</label>
                                 <textarea name="mo_ta" cols="30" class="form-control" rows="10"><?= $sanpham['mo_ta'] ?></textarea>
                             </div>
+                          <?php  $mau_sac = explode(',', $mau_sac); ?>
+
                             <div class="row mb10 input-group mb-3">
                                 MÀU SẮC <br>
                                 <label><input type="checkbox" name="mau_sac[]" value="black" <?php echo (in_array('black', $mau_sac) ? 'checked' : ''); ?>> Đen <span style="display: inline-block; width: 17px; height: 17px; background-color:black ; border: 1px solid #000; margin-right: 5px;"></span></label><br>
