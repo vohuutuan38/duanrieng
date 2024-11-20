@@ -60,6 +60,47 @@ function update_trang_thai_donhang($id, $trang_thai) {
     pdo_execute($sql, $trang_thai, $id);
 }
 
+function count_orders_by_status($status) {
+    $sql = "SELECT COUNT(*) as count FROM donhang WHERE trang_thai = ?";
+    return pdo_query_one($sql, $status)['count'];
+}
+
+function total_revenue() {
+    $sql = "SELECT SUM(tong_tien) as revenue FROM donhang WHERE trang_thai = 'Hoàn thành'"; // 3 là trạng thái hoàn thành
+    return pdo_query_one($sql)['revenue'];
+}
+
+function best_selling_products() {
+    $sql = "SELECT ten_san_pham, SUM(so_luong) as total_quantity
+            FROM chitietdonhang
+            GROUP BY ma_san_pham
+            ORDER BY total_quantity DESC
+            LIMIT 5";
+    return pdo_query($sql);
+}
+function get_total_products_sold() {
+    $sql = "SELECT SUM(so_luong) as total_products FROM chitietdonhang 
+            INNER JOIN donhang ON chitietdonhang.ma_don_hang = donhang.ma_don_hang 
+            WHERE donhang.trang_thai = 'Hoàn thành'"; // Chỉ tính đơn hàng hoàn thành
+    $result = pdo_query_one($sql);
+    return $result['total_products'] ?? 0;
+}
+
+function count_orders_by_payment_method($method) {
+    $sql = "SELECT COUNT(*) as count FROM donhang WHERE pttt = ?";
+    $result = pdo_query_one($sql,$method);
+    return $result['count'] ?? 0;
+}
+function get_top_customer() {
+    $sql = "SELECT nguoidung.ten, COUNT(donhang.ma_don_hang) as total_orders 
+            FROM donhang 
+            INNER JOIN nguoidung ON donhang.ma_nguoi_dung = nguoidung.ma_nguoi_dung 
+            GROUP BY donhang.ma_nguoi_dung 
+            ORDER BY total_orders DESC 
+            LIMIT 1";
+    return pdo_query_one($sql);
+}
+
 
 
 

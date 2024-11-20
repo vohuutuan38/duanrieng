@@ -323,7 +323,21 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     include './views/account/capnhattaikhoan.php';  
 
                         break;
-                    
+                    case 'add_comment':
+
+                        if (isset($_POST['noi_dung']) && isset($_POST['danh_gia'])) {
+                            $ma_nguoi_dung = $_POST['ma_nguoi_dung'];
+                            $ma_san_pham = $_POST['ma_san_pham'];
+                            $noi_dung = $_POST['noi_dung'];
+                            $danh_gia = $_POST['danh_gia'];
+                            $ngay_binh_luan = date('Y-m-d H:i:s');
+                        
+                            add_comment($ma_nguoi_dung, $ma_san_pham, $noi_dung, $danh_gia, $ngay_binh_luan);
+                            header("Location: index.php?act=chitietsanpham&ma_san_pham=$ma_san_pham");
+                            exit();
+                        }
+                        
+                        break;
 
 
 

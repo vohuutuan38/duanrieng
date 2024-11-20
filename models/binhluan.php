@@ -43,6 +43,20 @@ WHERE
     $listcomments = pdo_query($sql);
     return $listcomments;
 }
+
+function check_user_purchase($ma_nguoi_dung, $ma_san_pham) {
+    $sql = "SELECT COUNT(*) FROM donhang d
+            JOIN chitietdonhang c ON d.ma_don_hang = c.ma_don_hang
+            WHERE d.ma_nguoi_dung = $ma_nguoi_dung AND c.ma_san_pham = $ma_san_pham AND d.trang_thai = 3"; // 3 là trạng thái hoàn thành
+    return pdo_query_value($sql) > 0;
+}
+function add_comment($ma_nguoi_dung, $ma_san_pham, $noi_dung, $danh_gia, $ngay_binh_luan) {
+    $sql = "INSERT INTO binhluan (ma_nguoi_dung, ma_san_pham, noi_dung, danh_gia, ngay_binh_luan) 
+            VALUES ('$ma_nguoi_dung', '$ma_san_pham','$noi_dung','$danh_gia','$ngay_binh_luan')";
+    pdo_execute($sql);
+}
+
+
 // function delete_danhmuc($id){
 //     $sql="delete from danhmucsanpham where ma_danh_muc=".$id;
 //     pdo_execute($sql);
