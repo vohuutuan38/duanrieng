@@ -87,8 +87,6 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     $thongbao = "Email hoặc mật khẩu không đúng!";
                     require './views/account/dangnhap.php';
                 }
-            } else {
-                require './views/account/dangnhap.php';
             }
 
             include './views/account/dangnhap.php';

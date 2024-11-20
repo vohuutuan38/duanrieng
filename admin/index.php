@@ -19,7 +19,7 @@ if ($_SESSION['user']['loai_nguoi_dung'] === 'NhanVien') {
 } else {
     // Xóa session nếu không phải nhân viên
     unset($_SESSION['user']);
-    $_SESSION['error'] = 'Bạn không có quyền truy cập!';
+    $_SESSION['thongbao'] = 'Bạn không có quyền truy cập!';
     header("Location:../index.php?act=dangnhap"); // Quay lại trang đăng nhập
     exit();
 }
