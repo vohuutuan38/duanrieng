@@ -24,13 +24,22 @@
                                         <label for="dia_chi" class="required">Địa chỉ</label>
                                         <input type="text" id="dia_chi" name="dia_chi" value="<?= htmlspecialchars($_SESSION['user']['dia_chi']) ?>" required />
                                     </div>
+
+                                    <div class="form-check mt-3">
+                                        <input type="radio" id="tienmat" class="form-check-input" name="pttt" value="1" checked>
+                                        <label for="tienmat" class="form-check-label">Thanh toán tiền mặt</label><br>
+
+                                        <input type="radio" id="chuyenkhoan" class="form-check-input" name="pttt" value="0">
+                                        <label for="chuyenkhoan" class="form-check-label">Thanh toán bằng chuyển khoản</label><br>
+                                    </div>
+
                                 <?php } else { ?>
                                     <p>Vui lòng <a href="index.php?act=dangnhap">đăng nhập</a> để tiếp tục thanh toán.</p>
                                 <?php } ?>
-                                
+
                                 <!-- Thêm các trường ẩn cho giỏ hàng và tổng tiền -->
                                 <input type="hidden" name="tong_tien" value="<?= $tong_tien_gio_hang + 30000 ?>" /> <!-- Phí vận chuyển -->
-                                <button type="submit" class="btn btn-sqr">Xác Nhận Đặt Hàng</button>
+                                <button type="submit" class="btn btn-sqr mt-3">Xác Nhận Đặt Hàng</button>
                             </form>
                         </div>
                     </div>
@@ -71,7 +80,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2">Tổng tiền</td>
-                                            <td><strong><?= number_format($tong_tien_gio_hang+30000) ?> đ</strong></td>
+                                            <td><strong><?= number_format($tong_tien_gio_hang + 30000) ?> đ</strong></td>
                                         </tr>
                                     </tfoot>
                                 </table>

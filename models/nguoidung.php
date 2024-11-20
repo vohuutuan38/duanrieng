@@ -34,5 +34,22 @@ function emailExists($email) {
    return $account_user['count'] > 0;
 }
 
+function get_user_by_id($ma_nguoi_dung) {
+  $sql = "SELECT * FROM nguoidung WHERE ma_nguoi_dung = $ma_nguoi_dung";
+  $fullaccoutn = pdo_query_one($sql);
+  return $fullaccoutn;
+}
+
+function update_user($ma_nguoi_dung, $ho_ten, $email, $so_dien_thoai, $dia_chi,$anh_dai_dien) {
+  $sql = "UPDATE nguoidung 
+          SET ten = '$ho_ten', 
+              email = '$email', 
+              anh_dai_dien = '$anh_dai_dien',
+              so_dien_thoai = '$so_dien_thoai', 
+              dia_chi = '$dia_chi' 
+          WHERE ma_nguoi_dung = '$ma_nguoi_dung'";
+  
+  pdo_execute($sql);
+}
 
 ?>

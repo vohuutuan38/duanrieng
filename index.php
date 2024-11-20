@@ -233,15 +233,15 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include './views/thanhtoan.php';
             break;
             case 'confirmcheckout':
-                if (isset($_POST['ho_ten']) && isset($_POST['so_dien_thoai']) && isset($_POST['dia_chi'])) {
+                if (isset($_POST['ho_ten']) && isset($_POST['so_dien_thoai']) && isset($_POST['dia_chi']) && isset($_POST['pttt'])) {
                     // Lấy thông tin người dùng từ session
                     $ma_nguoi_dung = $_SESSION['user']['ma_nguoi_dung'];
                   
                     $tong_tien = $_POST['tong_tien']; // Lấy tổng tiền từ form
-                    
+                    $pttt = $_POST['pttt'];
                     // Lưu vào bảng `donhang`
                     // var_dump($ma_nguoi_dung, $tong_tien);
-                    $ma_don_hang = insert_donhang($ma_nguoi_dung, $tong_tien);
+                    $ma_don_hang = insert_donhang($ma_nguoi_dung, $tong_tien, $pttt);
                     
                     // var_dump($ma_don_hang);
                     // Lưu chi tiết sản phẩm vào bảng `chitietdonhang`
@@ -270,7 +270,60 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     }
                     include './views/donhangcuatoi.php';  // Gọi view và truyền dữ liệu vào
                     break;
-                
+
+                    case 'donhang_detail':
+                        $id = $_GET['id'];
+                        $donhang = get_donhang_by_id($id); // Lấy thông tin đơn hàng
+                        $chitiets = get_chitiet_donhang_by_donhang($id); // Lấy chi tiết đơn hàng
+                        include 'views/chitietdonhang.php';
+                        break;
+
+                    case 'update_account':
+
+                        $ma_nguoi_dung = $_SESSION['user']['ma_nguoi_dung'];
+                        // var_dump($ma_nguoi_dung);
+                        // die();
+                        $user = get_user_by_id($ma_nguoi_dung);
+
+
+                        if (isset($_POST['ho_ten'], $_POST['email'], $_POST['so_dien_thoai'], $_POST['dia_chi'])) {
+                            $ma_nguoi_dung = $_SESSION['user']['ma_nguoi_dung'];
+                            $ho_ten = $_POST['ho_ten'];
+                            $email = $_POST['email'];
+                            $so_dien_thoai = $_POST['so_dien_thoai'];
+                            $dia_chi = $_POST['dia_chi'];
+                            $hinh = $_FILES['anh_dai_dien']['name'];
+                           
+                            // Xử lý upload hình ảnh
+                            if (!empty($hinh)) {
+                                $target_dir = "./uploads/";
+                                $target_file = $target_dir . basename($hinh);
+                                if (move_uploaded_file($_FILES["anh_dai_dien"]["tmp_name"], $target_file)) {
+                                    // Hình ảnh đã được tải lên thành công
+                                } else {
+                                    echo "Lỗi: Không thể tải hình ảnh lên.";
+                                    $hinh = ''; // Giữ lại hình ảnh cũ nếu không tải lên được
+                                }
+                            } else {
+                                $hinh = $_POST['anh_dai_dien_cu']; // Giữ lại hình ảnh cũ nếu không chọn file mới
+                            }
+                            update_user($ma_nguoi_dung, $ho_ten, $email, $so_dien_thoai, $dia_chi,$hinh);
+                    
+                            // Cập nhật thông tin session
+                            $_SESSION['user']['ten'] = $ho_ten;
+                            $_SESSION['user']['email'] = $email;
+                            $_SESSION['user']['so_dien_thoai'] = $so_dien_thoai;
+                            $_SESSION['user']['dia_chi'] = $dia_chi;
+                            $_SESSION['user']['anh_dai_dien'] = $hinh;
+                    
+                            $_SESSION['thongbao'] = "Cập nhật tài khoản thành công!";
+                            header("Location: index.php?act=update_account");
+                            exit();
+                        }
+                    include './views/account/capnhattaikhoan.php';  
+
+                        break;
+                    
 
 
 

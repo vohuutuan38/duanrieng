@@ -1,17 +1,17 @@
 <?php
 
-function insert_donhang($ma_nguoi_dung, $tong_tien) {
+function insert_donhang($ma_nguoi_dung, $tong_tien,$pttt) {
     $ngay_dat = date('Y-m-d H:i:s');  // Lấy ngày giờ hiện tại
     $trang_thai = 1;  // Giả sử trạng thái đơn hàng là 1 (chờ xử lý)
 
     // Câu lệnh SQL để chèn dữ liệu vào bảng donhang
-    $sql = "INSERT INTO donhang (ma_nguoi_dung, ngay_dat, tong_tien, trang_thai) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO donhang (ma_nguoi_dung, ngay_dat, tong_tien, trang_thai,pttt) VALUES (?, ?, ?, ?,?)";
 
     // Kết nối cơ sở dữ liệu và thực thi câu lệnh
     $conn = pdo_get_connection(); // Lấy kết nối PDO
     if ($conn) {
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$ma_nguoi_dung, $ngay_dat, $tong_tien, $trang_thai]);
+        $stmt->execute([$ma_nguoi_dung, $ngay_dat, $tong_tien, $trang_thai, $pttt]);
 
         // Trả về ID của đơn hàng vừa tạo
         return $conn->lastInsertId(); // Gọi lastInsertId từ kết nối PDO
@@ -37,6 +37,28 @@ function get_donhang_by_user($ma_nguoi_dung) {
     return $list_donhang;
 }
 
+function get_all_donhangs() {
+    $sql = "SELECT donhang.*, nguoidung.ten 
+            FROM donhang 
+            JOIN nguoidung ON donhang.ma_nguoi_dung = nguoidung.ma_nguoi_dung
+            ORDER BY ngay_dat DESC";
+    return pdo_query($sql);
+}
+
+function get_donhang_by_id($id) {
+    $sql = "SELECT donhang.*, nguoidung.ten FROM donhang JOIN nguoidung ON donhang.ma_nguoi_dung = nguoidung.ma_nguoi_dung WHERE ma_don_hang = ?";
+    return pdo_query_one($sql, $id);
+}
+
+function get_chitiet_donhang_by_donhang($id) {
+    $sql = "SELECT * FROM chitietdonhang WHERE ma_don_hang = ?";
+    return pdo_query($sql, $id);
+}
+
+function update_trang_thai_donhang($id, $trang_thai) {
+    $sql = "UPDATE donhang SET trang_thai = ? WHERE ma_don_hang = ?";
+    pdo_execute($sql, $trang_thai, $id);
+}
 
 
 

@@ -21,19 +21,30 @@
                                                 <th>Ngày đặt</th>
                                                 <th>Tổng tiền</th>
                                                 <th>Trạng thái</th>
+                                                <th>Phương thức thanh toán</th>
+                                                <th>Hành Động</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php foreach ($donhangs as $donhang): ?>
                                                 <tr>
                                                     <td><?=  $donhang['ma_don_hang']; ?></td>
-                                                    <td><?= date('Y-m-d', strtotime($donhang['ngay_dat'])); ?></td>
+                                                    <td><?= date('d-m-Y', strtotime($donhang['ngay_dat'])); ?></td>
                                                     <td><?=  number_format($donhang['tong_tien'], 0, ',', '.'); ?> VND</td>
                                                     <td>
                                                         <?=
 
                                                          $donhang['trang_thai'];
                                                         ?>
+                                                    </td>
+                                                    <td>
+                                                        <?=
+
+                                                         $donhang['pttt'] == 0 ? 'Thanh toán bằng chuyển khoản' : 'Thanh toán bằng tiền mặt' ;
+                                                        ?>
+                                                    </td>
+                                                    <td>
+                                                    <a class="btn btn-sqr" href="index.php?act=donhang_detail&id=<?= $donhang['ma_don_hang'] ?>">Xem chi tiết</a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>

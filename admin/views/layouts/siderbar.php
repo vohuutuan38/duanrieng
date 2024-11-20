@@ -2,18 +2,18 @@
     <!-- LOGO -->
     <div class="navbar-brand-box">
         <!-- Dark Logo-->
-        <a href="index.html" class="logo logo-dark">
+        <a href="../index.php" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="assets/images/logo-sm.png" alt="" height="22">
+                <img src="assets/images/logo/logo.png" alt="" height="22">
             </span>
             <span class="logo-lg">
                 <img src="assets/images/logo/logo.png" alt="" height="70">
             </span>
         </a>
         <!-- Light Logo-->
-        <a href="index.html" class="logo logo-light">
+        <a href="../index.php" class="logo logo-light">
             <span class="logo-sm">
-                <img src="assets/images/logo-sm.png" alt="" height="22">
+                <img src="assets/images/logo/logo.png" alt="" height="22">
             </span>
             <span class="logo-lg">
                 <img src="assets/images/logo/logo.png" alt="" height="70">
@@ -58,7 +58,7 @@
                     <a class="nav-link menu-link" href="index.php?act=listsp" >
                         <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Danh sách sản phẩm</span>
                     </a>
-                    <a class="nav-link menu-link" href="#sidebarDanhMuc" >
+                    <a class="nav-link menu-link" href="index.php?act=admin_donhang" >
                     <i class="ri-shopping-cart-2-line"></i><span data-key="t-advance-ui">Quản lý đơn hàng</span>
                     </a>
                     <a class="nav-link menu-link" href="index.php?act=listspcomment" >

@@ -7,12 +7,13 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Dashboard | NN Shop</title>
+    <title>Dashboard | Mobile Shop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
 
     <!-- CSS -->
+    <!-- <link rel="icon" type="image/png" href="assets/images/logo/logo.png"> -->
     <?php
     require_once "libs_css.php";
     ?>
@@ -32,7 +33,7 @@
             <div class="d-flex">
                 <!-- LOGO -->
                 <div class="navbar-brand-box horizontal-logo">
-                    <a href="index.html" class="logo logo-dark">
+                    <a href="../index.php" class="logo logo-dark">
                         <span class="logo-sm">
                             <img src="assets/images/logo/logo.png" alt="" height="22">
                         </span>
@@ -41,7 +42,7 @@
                         </span>
                     </a>
 
-                    <a href="index.html" class="logo logo-light">
+                    <a href="../index.php" class="logo logo-light">
                         <span class="logo-sm">
                             <img src="assets/images/logo/logo.png" alt="" height="22">
                         </span>

@@ -1,19 +1,7 @@
 <?php
 session_start();
 ob_start();
-// // Require file Common
-// require_once '../commons/env.php'; // Khai báo biến môi trường
-// require_once '../commons/function.php'; // Hàm hỗ trợ
 
-// // Require toàn bộ file Controllers
-// require_once 'controllers/DashboardController.php';
-
-// // Require toàn bộ file Models
-
-// // Route
-// $act = $_GET['act'] ?? '/';
-
-// // Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
 if ($_SESSION['user']['loai_nguoi_dung'] === 'NhanVien') {
   
 } else {
@@ -31,7 +19,9 @@ include "../models/danhmuc.php";
 include "../models/sanpham.php";
 include "../models/nguoidung.php";
 include "../models/binhluan.php";
+include "../models/donhang.php";
 // //controller
+
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
@@ -210,6 +200,35 @@ if (isset($_GET['act'])) {
                 session_destroy();
                 header('Location:../index.php');
                 break;
+
+                case 'admin_donhang':
+                   
+                    $donhangs = get_all_donhangs(); // Lấy tất cả đơn hàng
+                    include 'views/donhang/donhang.php';
+                    break;
+                
+                case 'admin_donhang_detail':
+                    $id = $_GET['id'];
+                    $donhang = get_donhang_by_id($id); // Lấy thông tin đơn hàng
+                    $chitiets = get_chitiet_donhang_by_donhang($id); // Lấy chi tiết đơn hàng
+                    include 'views/donhang/donhang_detail.php';
+                    break;
+                
+                case 'admin_donhang_update':
+                    $id = $_GET['id'];
+                    $donhang = get_donhang_by_id($id); // Lấy thông tin đơn hàng
+                    include 'views/donhang/donhang_update.php';
+                    break;
+                
+                case 'admin_donhang_update_save':
+                    $id = $_POST['ma_don_hang'];
+                    $trang_thai = $_POST['trang_thai'];
+                    update_trang_thai_donhang($id, $trang_thai); // Cập nhật trạng thái đơn hàng
+                    $_SESSION['thongbao'] = "Sửa trạng thái thành công!";
+                    header('Location: index.php?act=admin_donhang');
+                    break;
+                
+
         default:
             include "../admin/views/home.php";
 
