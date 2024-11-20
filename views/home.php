@@ -11,7 +11,7 @@
                                 <div class="hero-slider-content slide-1">
                                     <h2 class="slide-title ">Iphone 15 Pro Max <span>Collection</span></h2>
                                     <h4 class="slide-desc ">Designer Jewelry Necklaces-Bracelets-Earings</h4>
-                                    <a href="shop.html" class="btn btn-hero">Xem Ngay</a>
+                                    <a href="index.php?act=chitietsanpham&ma_san_pham=22" class="btn btn-hero">Xem Ngay</a>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
             <div class="row row-20 mtn-20">
                 <div class="col-sm-6">
                     <figure class="banner-statistics mt-20">
-                        <a href="#">
+                        <a href="index.php?act=shopiphone">
                             <img src="./views/assets/img/banner/banner-12.png" alt="product banner">
                         </a>
 
@@ -103,7 +103,7 @@
                 </div>
                 <div class="col-sm-6">
                     <figure class="banner-statistics mt-20">
-                        <a href="#">
+                        <a href="index.php?act=shopiphone">
                             <img src="./views/assets/img/banner/banner-2.jpg" alt="product banner">
                         </a>
 
@@ -111,7 +111,7 @@
                 </div>
                 <div class="col-sm-6">
                     <figure class="banner-statistics mt-20">
-                        <a href="#">
+                        <a href="index.php?act=shopiphone">
                             <img src="./views/assets/img/banner/banner-3.jpg" alt="product banner">
                         </a>
 
@@ -119,7 +119,7 @@
                 </div>
                 <div class="col-sm-6">
                     <figure class="banner-statistics mt-20">
-                        <a href="#">
+                        <a href="index.php?act=shopsamsung">
                             <img src="./views/assets/img/banner/banner-14.jpg" alt="product banner">
                         </a>
 

@@ -14,7 +14,15 @@ ob_start();
 // $act = $_GET['act'] ?? '/';
 
 // // Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
-
+if ($_SESSION['user']['loai_nguoi_dung'] === 'NhanVien') {
+  
+} else {
+    // Xóa session nếu không phải nhân viên
+    unset($_SESSION['user']);
+    $_SESSION['error'] = 'Bạn không có quyền truy cập!';
+    header("Location:../index.php?act=dangnhap"); // Quay lại trang đăng nhập
+    exit();
+}
 
 include "../models/pdo.php";
 include "../admin/views/layouts/header.php";
@@ -200,7 +208,7 @@ if (isset($_GET['act'])) {
                 case 'dangxuat';
                 session_start();
                 session_destroy();
-                header('Location:./index.php');
+                header('Location:../index.php');
                 break;
         default:
             include "../admin/views/home.php";
