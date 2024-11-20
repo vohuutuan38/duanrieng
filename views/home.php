@@ -172,9 +172,7 @@
                                                                 <span>new</span>
                                                             </div>
                                                         </div>
-                                                        <div class="cart-hover">
-                                                            <button class="btn btn-cart">add to cart</button>
-                                                        </div>
+                                                       
                                                     </figure>
                                                     <div class="product-caption text-center">
                                                         <div class="product-identity">
@@ -256,9 +254,7 @@
                                                                 <span>new</span>
                                                             </div>
                                                         </div>
-                                                        <div class="cart-hover">
-                                                            <button class="btn btn-cart">add to cart</button>
-                                                        </div>
+                                                       
                                                     </figure>
                                                     <div class="product-caption text-center">
                                                         <div class="product-identity">
