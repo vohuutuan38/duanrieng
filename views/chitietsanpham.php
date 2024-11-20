@@ -179,39 +179,66 @@
                                             ?>
 
 
-                                            <form action="#" class="review-form">
-                                                <div class="form-group row">
-                                                    <div class="col">
-                                                        <label class="col-form-label"><span class="text-danger">*</span>
-                                                            Bình Luận Của Bạn</label>
-                                                        <textarea class="form-control" required></textarea>
-                                                        <div class="help-block pt-10"><span
-                                                                class="text-danger">Note:</span>
-                                                            HTML is not translated!
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col">
-                                                        <label class="col-form-label"><span class="text-danger">*</span>
-                                                            Rating</label>
-                                                        &nbsp;&nbsp;&nbsp; Bad&nbsp;
-                                                        <input type="radio" value="1" name="rating">
-                                                        &nbsp;
-                                                        <input type="radio" value="2" name="rating">
-                                                        &nbsp;
-                                                        <input type="radio" value="3" name="rating">
-                                                        &nbsp;
-                                                        <input type="radio" value="4" name="rating">
-                                                        &nbsp;
-                                                        <input type="radio" value="5" name="rating" checked>
-                                                        &nbsp;Good
-                                                    </div>
-                                                </div>
-                                                <div class="buttons">
-                                                    <button class="btn btn-sqr" type="submit">Continue</button>
-                                                </div>
-                                            </form> <!-- end of review-form -->
+<?php
+if (isset($_SESSION['user']['ma_nguoi_dung'])) {
+    $ma_nguoi_dung = $_SESSION['user']['ma_nguoi_dung'];
+    // Kiểm tra xem người dùng đã mua sản phẩm này hay chưa
+    $check_purchase = check_user_purchase($ma_nguoi_dung, $ma_san_pham);
+    // var_dump($check_purchase);
+    // die();
+
+    if ($check_purchase) {
+        // Hiển thị form bình luận
+        ?>
+        <form action="index.php?act=add_comment" method="POST" class="review-form">
+            <input type="hidden" name="ma_san_pham" value="<?= $ma_san_pham ?>">
+            <input type="hidden" name="ma_nguoi_dung" value="<?= $ma_nguoi_dung ?>">
+            
+            <div class="form-group row">
+                <div class="col">
+                    <label class="col-form-label"><span class="text-danger">*</span> Bình Luận Của Bạn</label>
+                    <textarea class="form-control" name="noi_dung" required></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+               
+                    <label class="col-form-label"> Đánh Giá</label>
+                    <div class="form-check">
+                        <input type="radio"  value="1" name="danh_gia">
+                        <label class="form-check-label" for="flexRadioDisabled">1 sao</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio"  value="2" name="danh_gia">
+                    <label class="form-check-label" for="flexRadioDisabled">2 sao</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio"  value="3" name="danh_gia">
+                    <label class="form-check-label" for="flexRadioDisabled">3 sao</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio"  value="4" name="danh_gia">
+                    <label class="form-check-label" for="flexRadioDisabled">4 sao</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio"  value="5" name="danh_gia" checked>
+                    <label class="form-check-label" for="flexRadioDisabled">5 sao</label>
+                    </div>
+            
+               
+            </div>
+            <div class="buttons">
+                <button class="btn btn-sqr" type="submit">Gửi Bình Luận</button>
+            </div>
+        </form>
+        <?php
+    } else {
+        echo '<p class="text-danger">Bạn phải mua sản phẩm này trước khi bình luận.</p>';
+    }
+} else {
+    echo '<p class="text-danger">Vui lòng đăng nhập để bình luận.</p>';
+}
+?>
+
                                         </div>
                                     </div>
                                 </div>

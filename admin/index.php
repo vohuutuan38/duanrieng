@@ -22,6 +22,15 @@ include "../models/binhluan.php";
 include "../models/donhang.php";
 // //controller
 
+$total_orders = count_orders_by_status('Chờ xử lý') + count_orders_by_status('Đang giao') + count_orders_by_status('Hoàn thành');
+$total_revenue = total_revenue();
+$best_selling_products = best_selling_products();
+$total_products_sold = get_total_products_sold();
+$cash_orders = count_orders_by_payment_method(1); // Thanh toán tiền mặt
+$bank_orders = count_orders_by_payment_method(0); // chuyển khoản
+$top_customer = get_top_customer();
+// var_dump($top_customer);
+// die();
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
@@ -229,7 +238,10 @@ if (isset($_GET['act'])) {
                     $_SESSION['thongbao'] = "Sửa trạng thái thành công!";
                     header('Location: index.php?act=admin_donhang');
                     break;
-                
+               
+                   
+                  
+                    
 
         default:
             include "../admin/views/home.php";
