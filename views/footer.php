@@ -14,24 +14,24 @@
                             <div class="widget-title">
                                 <div class="widget-logo">
                                     <a href="index.html">
-                                        <img src="/views/assets/img/logo/logo.png" alt="brand logo">
+                                        <img src="./views/assets/img/logo/logo.png" alt="brand logo" width="80px" height="80px">
                                     </a>
                                 </div>
                             </div>
                             <div class="widget-body">
-                                <p>We are a team of designers and developers that create high quality wordpress, shopify, Opencart </p>
+                                <p>MOBILESHOP - Hệ Thống 15 Chi Nhánh Bán Lẻ Điện Thoại Trên Toàn Thế Giới </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="widget-item">
-                            <h6 class="widget-title">Contact Us</h6>
+                            <h6 class="widget-title">Liên Hệ Với Chúng Tôi</h6>
                             <div class="widget-body">
                                 <address class="contact-block">
                                     <ul>
-                                        <li><i class="pe-7s-home"></i> 4710-4890 Breckinridge USA</li>
-                                        <li><i class="pe-7s-mail"></i> <a href="mailto:demo@plazathemes.com">demo@yourdomain.com </a></li>
-                                        <li><i class="pe-7s-call"></i> <a href="tel:(012)800456789987">(012) 800 456 789-987</a></li>
+                                        <li><i class="pe-7s-home"></i>CD FPTPolytechnic</li>
+                                        <li><i class="pe-7s-mail"></i> <a href="mailto:demo@plazathemes.com">Mobileshop@gmail.com </a></li>
+                                        <li><i class="pe-7s-call"></i> <a href="tel:(012)800456789987">0986866668</a></li>
                                     </ul>
                                 </address>
                             </div>
@@ -39,15 +39,11 @@
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="widget-item">
-                            <h6 class="widget-title">Information</h6>
+                            <h6 class="widget-title">Thông Tin</h6>
                             <div class="widget-body">
                                 <ul class="info-list">
-                                    <li><a href="#">about us</a></li>
-                                    <li><a href="#">Delivery Information</a></li>
-                                    <li><a href="#">privet policy</a></li>
-                                    <li><a href="#">Terms & Conditions</a></li>
-                                    <li><a href="#">contact us</a></li>
-                                    <li><a href="#">site map</a></li>
+                                    <li><a href="chinhsach.php">Về Chúng Tôi</a></li>
+                                    <li><a href="http://localhost/duan1-main/duan111/index.php?act=chinhsach">Chính Sách</a></li>
                                 </ul>
                             </div>
                         </div>
