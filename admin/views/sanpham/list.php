@@ -31,7 +31,7 @@
                     <th>Tên Sản Phẩm</th>
                     <th>Hình</th>
                     <th>Giá</th>
-                    <th>Mô tả</th>
+                    
                     <th>Mã loại</th>
                     <th>Hành Động</th>
                 </tr>
@@ -61,9 +61,9 @@
                             <td><a href="'.$suasp.'"> '.$ten_san_pham.'</a></td>
                              <td>'.$hinh.'</td>
                               <td>'.$gia.'</td>
-                               <td>'.$mo_ta.'</td>
+                              
                                <td>'.$tendanhmuc.'</td>
-                               <td></td>
+                            
                             <td>
                                 <a href="'.$suasp.'"><input type="button" class="btn btn-primary" value="SỬA"></a>
                                 <a href="'.$xoasp.'"><input type="button" class="btn btn-danger" value="XÓA"></a>
