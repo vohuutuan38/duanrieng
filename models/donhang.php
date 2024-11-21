@@ -73,7 +73,7 @@ function total_revenue() {
 function best_selling_products() {
     $sql = "SELECT ten_san_pham, SUM(so_luong) as total_quantity
             FROM chitietdonhang
-            GROUP BY ma_san_pham
+            GROUP BY ten_san_pham
             ORDER BY total_quantity DESC
             LIMIT 5";
     return pdo_query($sql);

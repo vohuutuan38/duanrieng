@@ -26,7 +26,8 @@ if (isset($_SESSION['thongbao'])) {
 $product_new = loadall_product_home();
 $product_iphone = loadall_product_iphone();
 $product_samsung = loadall_product_samsung();
-
+$product_top8_sale = loadall_top8_product();
+$product_iphone_top8 =loadall_top8_iphone();
 // $product_new2 = loadall_product_home2();
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
@@ -99,18 +100,33 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             break;
 
         case 'shopiphone':
-            $product_shop_iphone = loadall_shopiphone();
+            if (isset($_POST['kyw']) && ($_POST['kyw'] != "")) {
+                $kyw = $_POST['kyw'];
+            } else {
+                $kyw = "";
+            }
+            $product_shop_iphone = loadall_shopiphone($kyw);
             include './views/shop/shop-iphone.php';
             break;
 
         case 'shopsamsung':
-            $product_shop_samsung = loadall_shopsamsung();
+            if (isset($_POST['kyw']) && ($_POST['kyw'] != "")) {
+                $kyw = $_POST['kyw'];
+            } else {
+                $kyw = "";
+            }
+            $product_shop_samsung = loadall_shopsamsung($kyw);
             include './views/shop/shop-samsung.php';
             break;
 
-        case 'shophuawei':
-            $product_shop_huawei = loadall_shophuawei();
-            include './views/shop/shop-huawei.php';
+        case 'shopxiaomi':
+            if (isset($_POST['kyw']) && ($_POST['kyw'] != "")) {
+                $kyw = $_POST['kyw'];
+            } else {
+                $kyw = "";
+            }
+            $product_shop_xiaomi = loadall_shopxiaomi($kyw);
+            include './views/shop/shop-xiaomi.php';
             break;
 
         case 'chitietsanpham':

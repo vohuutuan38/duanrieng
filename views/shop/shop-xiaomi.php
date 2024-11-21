@@ -8,7 +8,7 @@
                         <nav aria-label="breadcrumb">
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.php"><i class="fa fa-home"></i></a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Danh Sách Iphone</li>
+                                <li class="breadcrumb-item active" aria-current="page">Danh Sách Huawei</li>
                             </ul>
                         </nav>
                     </div>
@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="col-lg-5 col-md-6 order-1 order-md-2">
                                     <div class="top-bar-right">
-                                        <form action="index.php?act=shopiphone" method="post" class="header-search-box d-lg-none d-xl-block">
+                                    <form action="index.php?act=shopxiaomi" method="post" class="header-search-box d-lg-none d-xl-block">
                                             <input type="text" name="kyw" placeholder="Search entire store hire" class="header-search-field">
                                             <button type="submit" name="timkiem" class="header-search-btn"><i class="pe-7s-search"></i></button>
                                         </form>
@@ -55,7 +55,7 @@
                             <?php
 
 
-                            foreach ($product_shop_iphone as $product) {
+                            foreach ($product_shop_xiaomi as $product) {
                                 extract($product);
                                 $anh = "./uploads/" . $anh_san_pham;
                                 $linksp = "index.php?act=chitietsanpham&ma_san_pham=" . $ma_san_pham;

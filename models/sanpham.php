@@ -195,7 +195,7 @@ function loadall_product_samsung()
     return $list_product;
 }
 
-function loadall_shopiphone()
+function loadall_shopiphone($kyw = "")
 {
     $sql = "SELECT 
                 sanpham.ma_san_pham,
@@ -210,16 +210,21 @@ function loadall_shopiphone()
             ON 
                 sanpham.ma_san_pham = bienthe.ma_san_pham
             WHERE 
-                sanpham.ma_danh_muc = 1
-            GROUP BY 
-                sanpham.ma_san_pham
-            ORDER BY 
-                sanpham.ma_san_pham DESC";
-    $list_product = pdo_query($sql);
-    return $list_product;
+                sanpham.ma_danh_muc = 1";
+
+    // Nếu có từ khóa, thêm điều kiện tìm kiếm
+    if ($kyw != "") {
+        $sql .= " AND sanpham.ten_san_pham LIKE '%" . $kyw . "%'";
+    }
+
+    $sql .= " GROUP BY sanpham.ma_san_pham
+              ORDER BY sanpham.ma_san_pham DESC";
+
+    return pdo_query($sql);
 }
 
-function loadall_shopsamsung()
+
+function loadall_shopsamsung($kyw)
 {
     $sql = "SELECT 
                 sanpham.ma_san_pham,
@@ -234,16 +239,22 @@ function loadall_shopsamsung()
             ON 
                 sanpham.ma_san_pham = bienthe.ma_san_pham
             WHERE 
-                sanpham.ma_danh_muc = 2
-            GROUP BY 
-                sanpham.ma_san_pham
-            ORDER BY 
-                sanpham.ma_san_pham DESC";
+                sanpham.ma_danh_muc = 2";
+
+    // Nếu có từ khóa, thêm điều kiện tìm kiếm
+    if ($kyw != "") {
+        $sql .= " AND sanpham.ten_san_pham LIKE '%" . $kyw . "%'";
+    }
+
+    $sql .= " GROUP BY sanpham.ma_san_pham
+              ORDER BY sanpham.ma_san_pham DESC";
     $list_product = pdo_query($sql);
     return $list_product;
 }
 
-function loadall_shophuawei()
+
+
+function loadall_shopxiaomi($kyw)
 {
     $sql = "SELECT 
                 sanpham.ma_san_pham,
@@ -258,15 +269,31 @@ function loadall_shophuawei()
             ON 
                 sanpham.ma_san_pham = bienthe.ma_san_pham
             WHERE 
-                sanpham.ma_danh_muc = 3
-            GROUP BY 
-                sanpham.ma_san_pham
-            ORDER BY 
-                sanpham.ma_san_pham DESC";
+                sanpham.ma_danh_muc = 3";
+
+    // Nếu có từ khóa, thêm điều kiện tìm kiếm
+    if ($kyw != "") {
+        $sql .= " AND sanpham.ten_san_pham LIKE '%" . $kyw . "%'";
+    }
+
+    $sql .= " GROUP BY sanpham.ma_san_pham
+              ORDER BY sanpham.ma_san_pham DESC";
     $list_product = pdo_query($sql);
     return $list_product;
 }
 
+ function loadall_top8_product(){
+    $sql = "SELECT * FROM sanpham ORDER BY gia ASC LIMIT 8" ;
+    $list_top6 = pdo_query($sql);
+    return$list_top6;
+ }
+
+ function loadall_top8_iphone(){
+$sql="SELECT * FROM sanpham WHERE ten_san_pham LIKE '%iPhone%' ORDER BY gia ASC LIMIT 8";
+$list_top6_iphone = pdo_query($sql);
+return $list_top6_iphone;
+
+ }
 function loadone_sanpham($ma_san_pham)
 {
     $sql = "SELECT 

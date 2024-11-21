@@ -39,18 +39,10 @@
                                     </div>
                                     <div class="col-lg-5 col-md-6 order-1 order-md-2">
                                         <div class="top-bar-right">
-                                            <div class="product-short">
-                                                <p>Sort By : </p>
-                                                <select class="nice-select" name="sortby">
-                                                    <option value="trending">Relevance</option>
-                                                    <option value="sales">Name (A - Z)</option>
-                                                    <option value="sales">Name (Z - A)</option>
-                                                    <option value="rating">Price (Low &gt; High)</option>
-                                                    <option value="date">Rating (Lowest)</option>
-                                                    <option value="price-asc">Model (A - Z)</option>
-                                                    <option value="price-asc">Model (Z - A)</option>
-                                                </select>
-                                            </div>
+                                        <form action="index.php?act=shopsamsung" method="post" class="header-search-box d-lg-none d-xl-block">
+                                            <input type="text" name="kyw" placeholder="Search entire store hire" class="header-search-field">
+                                            <button type="submit" name="timkiem" class="header-search-btn"><i class="pe-7s-search"></i></button>
+                                        </form>
                                         </div>
                                     </div>
                                 </div>
@@ -85,9 +77,7 @@ foreach ($product_shop_samsung as $product) {
                                               
                                             </div>
                                            
-                                            <div class="cart-hover">
-                                                <button class="btn btn-cart">add to cart</button>
-                                            </div>
+                                           
                                         </figure>
                                         <div class="product-caption text-center">
                                             <div class="product-identity">

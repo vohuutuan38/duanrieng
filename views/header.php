@@ -88,7 +88,7 @@
                                                     <li><a href="index.php?act=shopsamsung">SamSung</i></a>
                                                        
                                                     </li>
-                                                    <li><a href="index.php?act=shophuawei">Huawei </i></a>
+                                                    <li><a href="index.php?act=shopxiaomi">Xiaomi </i></a>
                                                        
                                                     </li>
                                                 </ul>
