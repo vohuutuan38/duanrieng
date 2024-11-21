@@ -1,6 +1,7 @@
 <?php
 
 function insert_donhang($ma_nguoi_dung, $tong_tien,$pttt) {
+    date_default_timezone_get('Asia/Ho_Chi_Minh');
     $ngay_dat = date('Y-m-d H:i:s');  // Lấy ngày giờ hiện tại
     $trang_thai = 1;  // Giả sử trạng thái đơn hàng là 1 (chờ xử lý)
 
